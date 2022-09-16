@@ -27,8 +27,63 @@ public class RESTTaller {
 		return ResponseEntity.ok(listaC);	
 	}
 	
+	@GetMapping
+	@RequestMapping("Empleado")
+	public ResponseEntity<List<Cliente>> getEmpleado(){
+		Cliente nCliente = new Cliente();
+		nCliente.setNombre("Manuel");
+		listaC.add(nCliente);
+		return ResponseEntity.ok(listaC);	
+	}
+	
+	@GetMapping
+	@RequestMapping("Cita")
+	public ResponseEntity<List<Cliente>> getCita(){
+		Cliente nCliente = new Cliente();
+		nCliente.setNombre("Manuel");
+		listaC.add(nCliente);
+		return ResponseEntity.ok(listaC);	
+	}
+	
+	@RequestMapping( value = "{idCliente}" )
+	public ResponseEntity<List<Cliente>> getClienteUsuario(){
+		Cliente nCliente = new Cliente();
+		nCliente.setNombre("Manuel");
+		listaC.add(nCliente);
+		return ResponseEntity.ok(listaC);	
+	}
+	
+	@RequestMapping( value = "{idCliente}" )
+	public ResponseEntity<List<Cliente>> getClienteContraseña(){
+		Cliente nCliente = new Cliente();
+		nCliente.setNombre("Manuel");
+		listaC.add(nCliente);
+		return ResponseEntity.ok(listaC);	
+	}
+	
+	
+	
+	
+	
 	@PostMapping
+	@RequestMapping("Cliente")
 	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente producto){
+		Cliente nuevoCliente = producto;
+		listaC.add(nuevoCliente);
+		return ResponseEntity.ok(nuevoCliente);		
+	}
+	
+	@PostMapping
+	@RequestMapping("Empleado")
+	public ResponseEntity<Cliente> createEmpleado(@RequestBody Cliente producto){
+		Cliente nuevoCliente = producto;
+		listaC.add(nuevoCliente);
+		return ResponseEntity.ok(nuevoCliente);		
+	}
+	
+	@PostMapping
+	@RequestMapping("Cita")
+	public ResponseEntity<Cliente> createCita(@RequestBody Cliente producto){
 		Cliente nuevoCliente = producto;
 		listaC.add(nuevoCliente);
 		return ResponseEntity.ok(nuevoCliente);		
