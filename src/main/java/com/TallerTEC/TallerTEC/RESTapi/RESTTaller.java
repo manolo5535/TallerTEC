@@ -17,6 +17,8 @@ import com.TallerTEC.TallerTEC.Entidades.*;
 public class RESTTaller {
 	
 	List<Cliente> listaC = new ArrayList<Cliente>();
+	List<Trabajador> listaE = new ArrayList<Trabajador>();
+	List<Cita> listaCita = new ArrayList<Cita>();
 	
 	@GetMapping
 	@RequestMapping("Cliente")
@@ -45,28 +47,14 @@ public class RESTTaller {
 		return ResponseEntity.ok(listaC);	
 	}
 	
-	@RequestMapping( value = "{idCliente}" )
-	public ResponseEntity<List<Cliente>> getClienteUsuario(){
-		Cliente nCliente = new Cliente();
-		nCliente.setNombre("Manuel");
-		listaC.add(nCliente);
-		return ResponseEntity.ok(listaC);	
-	}
-	
-	@RequestMapping( value = "{idCliente}" )
-	public ResponseEntity<List<Cliente>> getClienteContraseña(){
-		Cliente nCliente = new Cliente();
-		nCliente.setNombre("Manuel");
-		listaC.add(nCliente);
-		return ResponseEntity.ok(listaC);	
-	}
+
 	
 	
 	
 	
 	
 	@PostMapping
-	@RequestMapping("Cliente")
+	@RequestMapping("ClientePost")
 	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente producto){
 		Cliente nuevoCliente = producto;
 		listaC.add(nuevoCliente);
@@ -74,7 +62,7 @@ public class RESTTaller {
 	}
 	
 	@PostMapping
-	@RequestMapping("Empleado")
+	@RequestMapping("EmpleadoPost")
 	public ResponseEntity<Cliente> createEmpleado(@RequestBody Cliente producto){
 		Cliente nuevoCliente = producto;
 		listaC.add(nuevoCliente);
@@ -82,7 +70,7 @@ public class RESTTaller {
 	}
 	
 	@PostMapping
-	@RequestMapping("Cita")
+	@RequestMapping("CitaPost")
 	public ResponseEntity<Cliente> createCita(@RequestBody Cliente producto){
 		Cliente nuevoCliente = producto;
 		listaC.add(nuevoCliente);
