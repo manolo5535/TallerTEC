@@ -1,6 +1,7 @@
 package com.TallerTEC.TallerTEC.Entidades;
 
 public class Cita {
+	
 	public String hora;
 	public String cliente;
 	public String placa;

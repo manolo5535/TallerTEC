@@ -47,10 +47,6 @@ public class RESTTaller {
 		return ResponseEntity.ok(listaC);	
 	}
 	
-
-	
-	
-	
 	
 	
 	@PostMapping
