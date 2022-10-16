@@ -23,10 +23,70 @@ public class RESTTaller {
 	@GetMapping
 	@RequestMapping("Cliente")
 	public ResponseEntity<List<Cliente>> getCliente(){
-		Cliente nCliente = new Cliente();
-		nCliente.setNombre("Manuel");
-		listaC.add(nCliente);
-		return ResponseEntity.ok(listaC);	
+		try {
+			JsonElement fileElement = JsonParser.parseReader(new FileReader(archivoCliente));
+			
+			//Json a objeto
+			JsonObject fileObject = fileElement.getAsJsonObject();
+			
+			System.out.println(fileObject);
+			
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		
+		return ResponseEntity.ok(listaC);
+	}
+	
+	@PostMapping
+	@RequestMapping("Create")
+	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente nombre, Cliente apellido1){
+		
+		try {
+	         JsonParser parser = new JsonParser();
+	         Object obj = parser.parse(new FileReader(archivoCliente));
+	         JsonObject jsonObject = (JsonObject) obj;
+	         
+	         JsonArray msg = (JsonArray)jsonObject.get("Usuarios");
+	         Iterator<JsonElement> iterator = msg.iterator();
+	         while(iterator.hasNext()) {
+	            nameRead = iterator.next().toString();
+	            System.out.println(nameRead);
+	         }
+	         
+	         Cliente cliente = new Cliente();
+	         cliente.setNombre("Maria"); //nombre
+	         cliente.setApellido1("Maria"); //apellido1
+	         cliente.setApellido3("Maria"); //apellido3
+	         cliente.setTelefono(2222222); //telefono
+	         cliente.setCedula(222222); //cedula
+	         cliente.setEmail("Maria"); //email
+	         cliente.setDireccion("Maria"); //direccion
+	         cliente.setUsario("Maria"); //usuario
+	         cliente.setContraseña("Maria"); //contraseña
+	         
+	         Gson gson = new Gson();
+	         String json = gson.toJson(cliente);
+	         
+	         System.out.println(json);
+
+	         FileWriter file = new FileWriter(archivoCliente, false);
+	         JsonWriter jw = new JsonWriter(file);
+	         iterator = msg.iterator();
+	         Employees Usuarios = new Employees();
+	         while(iterator.hasNext()) {
+	        	 Usuarios.addEmployee(gson.fromJson(iterator.next().toString(), Cliente.class));
+	         }
+	         Usuarios.addEmployee(cliente);
+	         gson.toJson(Usuarios, Employees.class, jw);
+	         file.close();
+	         
+	      } catch(Exception e) {
+	         e.printStackTrace();
+	      }
+			
+		return ResponseEntity.ok(nombre);
+				
 	}
 	
 	@GetMapping
