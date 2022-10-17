@@ -1,0 +1,48 @@
+{
+	"Usuarios": [
+		{
+			"nombre": "juan",
+			"apellido1": "perez",
+			"apellido3": "se",
+			"telefono": 88888,
+			"cedula": 888,
+			"email": "perez@gmail.com",
+			"direccion": "san juan de dios",
+			"usario": "juanjose",
+			"contraseña": "AAAAAAA"
+		},
+		{
+			"nombre": "pablo",
+			"apellido1": "holahola",
+			"apellido3": "se",
+			"telefono": 66666,
+			"cedula": 666,
+			"email": "caca@mascaca.com",
+			"direccion": "san juan de dios",
+			"usario": "juanjose",
+			"contraseña": "AAAAAAA"
+		},
+		{
+			"nombre": "maria",
+			"apellido1": "nonono",
+			"apellido3": "se",
+			"telefono": 777777,
+			"cedula": 7777,
+			"email": "perez@gmail.com",
+			"direccion": "san juan de dios",
+			"usario": "juanjose",
+			"contraseña": "AAAAAAA"
+		},
+		{
+			"nombre": "Maria",
+			"apellido1": "Maria",
+			"apellido3": "Maria",
+			"telefono": 2222222,
+			"cedula": 222222,
+			"email": "Maria",
+			"direccion": "Maria",
+			"usario": "Maria",
+			"contraseña": "Maria"
+		}
+	]
+}

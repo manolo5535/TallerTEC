@@ -1,6 +1,11 @@
 package com.TallerTEC.TallerTEC.RESTapi;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -11,18 +16,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TallerTEC.TallerTEC.Entidades.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.*;
+import com.google.gson.annotations.*;	
 
 @RestController
 @RequestMapping("Taller")
 public class RESTTaller {
 	
 	List<Cliente> listaC = new ArrayList<Cliente>();
-	List<Trabajador> listaE = new ArrayList<Trabajador>();
-	List<Cita> listaCita = new ArrayList<Cita>();
+	String archivoCliente = "C:\\Users\\XPC\\Documents\\GitHub\\TallerTecBD2022\\TallerTEC\\src\\main\\java\\com\\TallerTEC\\TallerTEC\\RESTapi\\Cliente.json";
+	
+	public static String nameRead;
 	
 	@GetMapping
 	@RequestMapping("Cliente")
 	public ResponseEntity<List<Cliente>> getCliente(){
+
 		try {
 			JsonElement fileElement = JsonParser.parseReader(new FileReader(archivoCliente));
 			
@@ -36,6 +50,7 @@ public class RESTTaller {
 		}
 		
 		return ResponseEntity.ok(listaC);
+				
 	}
 	
 	@PostMapping
@@ -89,48 +104,16 @@ public class RESTTaller {
 				
 	}
 	
-	@GetMapping
-	@RequestMapping("Empleado")
-	public ResponseEntity<List<Cliente>> getEmpleado(){
-		Cliente nCliente = new Cliente();
-		nCliente.setNombre("Manuel");
-		listaC.add(nCliente);
-		return ResponseEntity.ok(listaC);	
+	// Employees class
+	class Employees {
+	   @Expose
+	   List<Cliente> Usuarios = new ArrayList<>();
+	   public List<Cliente> getEmployees() {
+	      return Usuarios;
+	   }
+	   public void addEmployee(Cliente nombre) {
+	      this.Usuarios.add(nombre);
+	   }
 	}
 	
-	@GetMapping
-	@RequestMapping("Cita")
-	public ResponseEntity<List<Cliente>> getCita(){
-		Cliente nCliente = new Cliente();
-		nCliente.setNombre("Manuel");
-		listaC.add(nCliente);
-		return ResponseEntity.ok(listaC);	
-	}
-	
-	
-	
-	@PostMapping
-	@RequestMapping("ClientePost")
-	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente producto){
-		Cliente nuevoCliente = producto;
-		listaC.add(nuevoCliente);
-		return ResponseEntity.ok(nuevoCliente);		
-	}
-	
-	@PostMapping
-	@RequestMapping("EmpleadoPost")
-	public ResponseEntity<Cliente> createEmpleado(@RequestBody Cliente producto){
-		Cliente nuevoCliente = producto;
-		listaC.add(nuevoCliente);
-		return ResponseEntity.ok(nuevoCliente);		
-	}
-	
-	@PostMapping
-	@RequestMapping("CitaPost")
-	public ResponseEntity<Cliente> createCita(@RequestBody Cliente producto){
-		Cliente nuevoCliente = producto;
-		listaC.add(nuevoCliente);
-		return ResponseEntity.ok(nuevoCliente);		
-	}
-
 }
